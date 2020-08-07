@@ -1,24 +1,49 @@
 import React from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
-
 //create your first component
-export function Home() {
-	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
-	);
+class Home extends React.Component {
+	constructor() {
+		super();
+		this.player = React.createRef();
+		this.state = {
+			songs: []
+		};
+	}
+
+	playFunction = () => {
+		this.player.current.play();
+	};
+
+	componentDidMount() {
+		fetch("https://assets.breatheco.de/apis/sound/songs")
+			.then(response => response.json())
+			.then(songs => this.setState({ songs }));
+	}
+
+	render() {
+		console.log(songs);
+		return (
+			<div className="page">
+				<ul className="player">
+					<button className="backButton" onClick={this.playFunction}>
+						<i className="fas fa-step-backward" />
+					</button>
+					<button onClick={this.playFunction}>
+						<i className="fas fa-play" />
+					</button>
+					<button className="pauseButton" onClick={this.playFunction}>
+						<i className="fas fa-pause" />
+					</button>
+					<button
+						className="forwardButton"
+						onClick={this.playFunction}>
+						<i className="fas fa-step-forward" />
+					</button>
+					<audio ref={this.player} />
+				</ul>
+			</div>
+		);
+	}
 }
+
+export default Home;

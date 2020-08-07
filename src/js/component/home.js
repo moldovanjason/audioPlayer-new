@@ -12,21 +12,27 @@ class Home extends React.Component {
 
 	playFunction = () => {
 		this.player.current.play();
-    };
-    
-    pauseFunction = () => {
-        this.player.current.pause()
-    }
+	};
+
+	pauseFunction = () => {
+		this.player.current.pause();
+	};
 
 	componentDidMount() {
 		fetch("https://assets.breatheco.de/apis/sound/songs")
 			.then(response => response.json())
-			.then(s => this.setState({ songs:s }));
+			.then(s => this.setState({ songs: s }))
+			.catch(error => console.log("Error!!!"));
 	}
+
+    {const key = null;}
 
 	render() {
 		return (
 			<div className="page">
+				{this.state.songs.map(oneSong => {
+					return <li key={key}>{oneSong.name}</li>;
+				})}
 				<ul className="player">
 					<button className="backButton" onClick={this.playFunction}>
 						<i className="fas fa-step-backward" />

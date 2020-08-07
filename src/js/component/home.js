@@ -12,16 +12,19 @@ class Home extends React.Component {
 
 	playFunction = () => {
 		this.player.current.play();
-	};
+    };
+    
+    pauseFunction = () => {
+        this.player.current.pause()
+    }
 
 	componentDidMount() {
 		fetch("https://assets.breatheco.de/apis/sound/songs")
 			.then(response => response.json())
-			.then(songs => this.setState({ songs }));
+			.then(s => this.setState({ songs:s }));
 	}
 
 	render() {
-		console.log(songs);
 		return (
 			<div className="page">
 				<ul className="player">

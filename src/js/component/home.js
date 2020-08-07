@@ -25,8 +25,6 @@ class Home extends React.Component {
 			.catch(error => console.log("Error!!!"));
 	}
 
-    {const key = null;}
-
 	render() {
 		return (
 			<div className="page">

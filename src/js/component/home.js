@@ -24,7 +24,7 @@ class Home extends React.Component {
 			.then(s => this.setState({ songs: s }))
 			.catch(error => console.log("Error!!!"));
 	}
-//work
+
 	render() {
 		return (
 			<div className="page">

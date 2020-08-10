@@ -20,7 +20,7 @@ class Home extends React.Component {
 
 	componentDidMount() {
 		fetch("https://assets.breatheco.de/apis/sound/songs")
-			.then(response => response.json())
+			.then(res => res.json())
 			.then(s => this.setState({ songs: s }))
 			.catch(error => console.log("Error!!!"));
 	}

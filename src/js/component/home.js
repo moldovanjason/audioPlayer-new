@@ -29,7 +29,7 @@ class Home extends React.Component {
 		return (
 			<div className="page">
 				{this.state.songs.map(oneSong => {
-					return <li key={key}>{oneSong.name}</li>;
+					return <li key={oneSong.id}>{oneSong.name}</li>;
 				})}
 				<ul className="player">
 					<button className="backButton" onClick={this.playFunction}>

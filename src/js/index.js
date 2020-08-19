@@ -13,4 +13,3 @@ import Home from "./component/home.js";
 
 //render your react application
 ReactDOM.render(<Home />, document.querySelector("#app"));
-/

@@ -22,20 +22,20 @@ class Home extends React.Component {
 		fetch("https://assets.breatheco.de/apis/sound/songs")
 			.then(res => res.json())
 			.then(s => this.setState({ songs: s }))
-			.catch(error => console.log("Error!!!"));
+			.catch(error => "Error!!!");
 	}
 
 	render() {
 		return (
 			<div className="page">
-				{this.state.songs.map(oneSong => {
-					return <li key={oneSong}>{oneSong.name}</li>;
+				{this.state.songs.map(playlist => {
+					return <li key={playlist}>{playlist.name}</li>;
 				})}
 				<ul className="player">
 					<button className="backButton" onClick={this.playFunction}>
 						<i className="fas fa-step-backward" />
 					</button>
-					<button onClick={this.playFunction}>
+					<button className="playButton" onClick={this.playFunction}>
 						<i className="fas fa-play" />
 					</button>
 					<button className="pauseButton" onClick={this.playFunction}>
